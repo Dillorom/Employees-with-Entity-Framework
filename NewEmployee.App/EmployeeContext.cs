@@ -8,7 +8,7 @@ using Employees;
 
 namespace NewEmployee.App
 {
-    class EmployeeContext :DbContext
+    class EmployeeContext : DbContext
     {
         public DbSet<Employee> employees { get; set; }
     }

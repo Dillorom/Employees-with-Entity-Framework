@@ -99,12 +99,9 @@ namespace NewEmployee.App
                                     {
                                         context.employees.Add(newEmployee);
 
-                                        int result = context.SaveChanges();
+                                        Console.WriteLine("Adding a new employee... Please, wait.");
 
-                                        do
-                                        {
-                                            Console.WriteLine("Adding a new employee... Please, wait.");
-                                        } while (result != 1);
+                                        context.SaveChanges();
 
                                         Console.WriteLine($"New employee {newEmployee.Name} with date of birth on\n" +
                                             $" {newEmployee.DateOfBirth.ToString("MM/dd/yyyy")} and salary of {newEmployee.Salary} has been added.");
