@@ -9,8 +9,6 @@ namespace NewEmployee.App
 {
     class Program
     {
-        //static List<Employee> employees = new List<Employee>();
-
         static string category;
 
         static string sortingDirection;
@@ -100,7 +98,13 @@ namespace NewEmployee.App
                                     if (newEmployee.ValidName() && (newEmployee.ValidDateOfBirth() && newEmployee.ValidSalary()))
                                     {
                                         context.employees.Add(newEmployee);
-                                        context.SaveChanges();
+
+                                        int result = context.SaveChanges();
+
+                                        do
+                                        {
+                                            Console.WriteLine("Adding a new employee... Please, wait.");
+                                        } while (result != 1);
 
                                         Console.WriteLine($"New employee {newEmployee.Name} with date of birth on\n" +
                                             $" {newEmployee.DateOfBirth.ToString("MM/dd/yyyy")} and salary of {newEmployee.Salary} has been added.");
@@ -265,7 +269,9 @@ namespace NewEmployee.App
 
                             int enteredNumber = int.Parse(Console.ReadLine());
 
-                            context.employees.ToList().Remove(toBeRemovedEmployees[enteredNumber - 1]);
+                            context.employees.Remove(toBeRemovedEmployees[enteredNumber - 1]);
+
+                            context.SaveChanges();
 
                             Console.WriteLine($"Employee Name: {toBeRemovedEmployees[enteredNumber - 1].Name}, Date of Birth:" +
                                 $" {toBeRemovedEmployees[enteredNumber - 1].DateOfBirth.ToString("MM/dd/yyyy")}, " +
@@ -273,7 +279,9 @@ namespace NewEmployee.App
                         }
                         else
                         {
-                            context.employees.ToList().Remove(toBeRemovedEmployees[0]);
+                            context.employees.Remove(toBeRemovedEmployees[0]);
+
+                            context.SaveChanges();
 
                             Console.WriteLine($"Employee Name: {toBeRemovedEmployees[0].Name}, Date of Birth: {toBeRemovedEmployees[0].DateOfBirth.ToString("MM/dd/yyyy")}, " +
                                 $"Salary: {toBeRemovedEmployees[0].Salary} has been removed from the list.");
