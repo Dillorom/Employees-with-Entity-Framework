@@ -274,7 +274,7 @@ namespace NewEmployee.App
                                 $" {toBeRemovedEmployees[enteredNumber - 1].DateOfBirth.ToString("MM/dd/yyyy")}, " +
                                 $"Salary: {toBeRemovedEmployees[enteredNumber - 1].Salary} has been removed from the list.");
                         }
-                        else
+                        else if (toBeRemovedEmployees.Count == 1)
                         {
                             context.employees.Remove(toBeRemovedEmployees[0]);
 
@@ -282,6 +282,10 @@ namespace NewEmployee.App
 
                             Console.WriteLine($"Employee Name: {toBeRemovedEmployees[0].Name}, Date of Birth: {toBeRemovedEmployees[0].DateOfBirth.ToString("MM/dd/yyyy")}, " +
                                 $"Salary: {toBeRemovedEmployees[0].Salary} has been removed from the list.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"An employee by the name {name} was not found.");
                         }
                         break;
 
