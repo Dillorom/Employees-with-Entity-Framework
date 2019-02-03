@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Employees
@@ -23,7 +24,16 @@ namespace Employees
         {
             System.Type dateTime = typeof(DateTime);
 
-            return this.DateOfBirth.GetType() == dateTime ? true : false;
+            int age = 0;
+
+            age = DateTime.Now.Year - DateOfBirth.Year;
+
+            if (DateTime.Now.DayOfYear < DateOfBirth.DayOfYear)
+            {
+                age = age - 1;
+            }
+
+            return (this.DateOfBirth.GetType() == dateTime ? true : false) && age >= 18;
         }
 
         public bool ValidSalary()

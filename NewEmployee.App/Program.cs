@@ -313,8 +313,9 @@ namespace NewEmployee.App
 
             void DateOfBirthPropt()
             {
-                Console.WriteLine("What is the date of birth of the new employee? Format options: 'MM/DD/YY', 'MM/DD/YYYY',\n" +
-                            " 'Jan 01, 2019', 'MM.DD.YY', 'MM.DD.YYYY', 'MM-DD-YY', 'MM-DD-YYYY'.");
+                Console.WriteLine("What is the date of birth of the new employee? The employee must be 18. \n" +
+                    "Format options: 'MM/DD/YY', 'MM/DD/YYYY',\n" +
+                            "'Jan 01, 2019', 'MM.DD.YY', 'MM.DD.YYYY', 'MM-DD-YY', 'MM-DD-YYYY'.");
                 enteredData = Console.ReadLine();
             }
 
